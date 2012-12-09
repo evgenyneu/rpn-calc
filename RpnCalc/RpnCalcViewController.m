@@ -10,7 +10,9 @@
 
 @implementation RpnCalcViewController
 
-- (IBAction)digitPressed:(id)sender {
+- (IBAction)digitPressed:(UIButton *)sender {
+    NSString *digit = [sender currentTitle];
+    NSLog(@"Digit presset = %@", digit)
 }
 
 @end
