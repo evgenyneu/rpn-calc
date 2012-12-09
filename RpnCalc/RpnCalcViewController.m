@@ -8,11 +8,25 @@
 
 #import "RpnCalcViewController.h"
 
+@interface RpnCalcViewController()
+
+@property (nonatomic) BOOL  userIsEnteringANumber;
+
+@end
+
 @implementation RpnCalcViewController
 
 - (IBAction)digitPressed:(UIButton *)sender {
-    NSString *digit = [sender currentTitle];
-    NSLog(@"Digit presset = %@", digit)
+    NSString *digit = [ sender currentTitle];
+    if (self.userIsEnteringANumber) {
+        self.display.text = [self.display.text stringByAppendingString:digit];
+    } else {
+        self.display.text = digit;
+        self.userIsEnteringANumber = YES;
+    }
+}
+
+- (IBAction)operationPressed:(UIButton *)sender {
 }
 
 @end
