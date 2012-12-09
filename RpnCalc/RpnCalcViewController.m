@@ -17,13 +17,16 @@
 @implementation RpnCalcViewController
 
 - (IBAction)digitPressed:(UIButton *)sender {
-    NSString *digit = [ sender currentTitle];
+    NSString *digit = sender.currentTitle;
     if (self.userIsEnteringANumber) {
         self.display.text = [self.display.text stringByAppendingString:digit];
     } else {
         self.display.text = digit;
         self.userIsEnteringANumber = YES;
     }
+}
+
+- (IBAction)enterPressed {
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {

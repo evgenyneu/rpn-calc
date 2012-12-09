@@ -18,6 +18,7 @@
 		2BCD31181674025B00767A8A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCD31171674025B00767A8A /* Default-568h@2x.png */; };
 		2BCD311B1674025B00767A8A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCD31191674025B00767A8A /* MainStoryboard.storyboard */; };
 		2BCD311E1674025B00767A8A /* RpnCalcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD311D1674025B00767A8A /* RpnCalcViewController.m */; };
+		2BCD312616741A3F00767A8A /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD312516741A3F00767A8A /* CalculatorBrain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		2BCD311A1674025B00767A8A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		2BCD311C1674025B00767A8A /* RpnCalcViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RpnCalcViewController.h; sourceTree = "<group>"; };
 		2BCD311D1674025B00767A8A /* RpnCalcViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RpnCalcViewController.m; sourceTree = "<group>"; };
+		2BCD312416741A3F00767A8A /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculatorBrain.h; path = ../CalculatorBrain.h; sourceTree = "<group>"; };
+		2BCD312516741A3F00767A8A /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculatorBrain.m; path = ../CalculatorBrain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,8 @@
 		2BCD31071674025B00767A8A /* RpnCalc */ = {
 			isa = PBXGroup;
 			children = (
+				2BCD312416741A3F00767A8A /* CalculatorBrain.h */,
+				2BCD312516741A3F00767A8A /* CalculatorBrain.m */,
 				2BCD31101674025B00767A8A /* RpnCalcAppDelegate.h */,
 				2BCD31111674025B00767A8A /* RpnCalcAppDelegate.m */,
 				2BCD31191674025B00767A8A /* MainStoryboard.storyboard */,
@@ -177,6 +182,7 @@
 				2BCD310E1674025B00767A8A /* main.m in Sources */,
 				2BCD31121674025B00767A8A /* RpnCalcAppDelegate.m in Sources */,
 				2BCD311E1674025B00767A8A /* RpnCalcViewController.m in Sources */,
+				2BCD312616741A3F00767A8A /* CalculatorBrain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -267,6 +267,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="enterPressed" destination="2" eventType="touchUpInside" id="Wec-mP-aOt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.43290405481575545" green="0.53032496018297004" blue="0.81337041440217395" alpha="1" colorSpace="calibratedRGB"/>
