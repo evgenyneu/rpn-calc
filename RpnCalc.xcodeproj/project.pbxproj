@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BA62DD3167D55D600456F53 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA62DD2167D55D600456F53 /* Icon@2x.png */; };
+		2BA62DD6167D55D800456F53 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA62DD5167D55D800456F53 /* Icon.png */; };
 		2BCD31021674025B00767A8A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCD31011674025B00767A8A /* UIKit.framework */; };
 		2BCD31041674025B00767A8A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCD31031674025B00767A8A /* Foundation.framework */; };
 		2BCD31061674025B00767A8A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCD31051674025B00767A8A /* CoreGraphics.framework */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2BA62DD2167D55D600456F53 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		2BA62DD5167D55D800456F53 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		2BCD30FD1674025B00767A8A /* RpnCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RpnCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BCD31011674025B00767A8A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2BCD31031674025B00767A8A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -59,6 +63,8 @@
 		2BCD30F21674025B00767A8A = {
 			isa = PBXGroup;
 			children = (
+				2BA62DD5167D55D800456F53 /* Icon.png */,
+				2BA62DD2167D55D600456F53 /* Icon@2x.png */,
 				2BCD31071674025B00767A8A /* RpnCalc */,
 				2BCD31001674025B00767A8A /* Frameworks */,
 				2BCD30FE1674025B00767A8A /* Products */,
@@ -169,6 +175,8 @@
 				2BCD31161674025B00767A8A /* Default@2x.png in Resources */,
 				2BCD31181674025B00767A8A /* Default-568h@2x.png in Resources */,
 				2BCD311B1674025B00767A8A /* MainStoryboard.storyboard in Resources */,
+				2BA62DD3167D55D600456F53 /* Icon@2x.png in Resources */,
+				2BA62DD6167D55D800456F53 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +307,7 @@
 				2BCD31231674025B00767A8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

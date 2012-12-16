@@ -24,6 +24,9 @@
 - (IBAction)digitPressed:(UIButton *)sender {
     NSString *digit = sender.currentTitle;
     if (self.userIsEnteringANumber) {
+        if ([digit isEqualToString:@"."] && [self.display.text rangeOfString:@"."].location != NSNotFound) {
+            return;
+        }
         self.display.text = [self.display.text stringByAppendingString:digit];
     } else {
         self.display.text = digit;
