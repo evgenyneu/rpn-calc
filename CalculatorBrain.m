@@ -39,7 +39,8 @@
     } else if ([@"×" isEqualToString:operation]) {
         result = [self popOperand] * [self popOperand];
     } else if ([@"÷" isEqualToString:operation]) {
-        result = [self popOperand] / [self popOperand];
+        double operand = [self popOperand];
+        result = [self popOperand] / operand;
     } else if ([@"√" isEqualToString:operation]) {
         result = sqrt([self popOperand]);
     } else if ([@"sin" isEqualToString:operation]) {
@@ -51,10 +52,6 @@
     [self pushOperand:result];
     
     return result; 
-}
-
-- (void) clear {
-    _operandStack = NULL;
 }
  
 @end

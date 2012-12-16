@@ -36,13 +36,19 @@
 
 - (IBAction)enterPressed {
     [self.brain pushOperand:[self.display.text doubleValue]];
-    self.userIsEnteringANumber = NO; 
+    self.userIsEnteringANumber = NO;
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {
     if (self.userIsEnteringANumber) [self enterPressed]; 
     double result = [self.brain performOperation:sender.currentTitle];
     self.display.text = [NSString stringWithFormat:@"%g",result];
+}
+
+- (IBAction)clearPressed {
+    self.brain = NULL;
+    self.userIsEnteringANumber = NO;
+    self.display.text = @"0";
 }
 
 @end
