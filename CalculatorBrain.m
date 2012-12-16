@@ -47,6 +47,8 @@
         result = sin([self popOperand]);
     } else if ([@"cos" isEqualToString:operation]) {
         result = cos([self popOperand]);
+    } else if ([@"π" isEqualToString:operation]) {
+        result = M_PI;
     }
     
     [self pushOperand:result];
