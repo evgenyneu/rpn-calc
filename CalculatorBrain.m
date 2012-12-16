@@ -40,11 +40,21 @@
         result = [self popOperand] * [self popOperand];
     } else if ([@"÷" isEqualToString:operation]) {
         result = [self popOperand] / [self popOperand];
+    } else if ([@"√" isEqualToString:operation]) {
+        result = sqrt([self popOperand]);
+    } else if ([@"sin" isEqualToString:operation]) {
+        result = sin([self popOperand]);
+    } else if ([@"cos" isEqualToString:operation]) {
+        result = cos([self popOperand]);
     }
     
     [self pushOperand:result];
     
     return result; 
+}
+
+- (void) clear {
+    _operandStack = NULL;
 }
  
 @end
