@@ -62,6 +62,20 @@ static NSUInteger const historySize = 10;
     [self updateHistory:sender.currentTitle];
 }
 
+- (IBAction)changeSignPressed:(UIButton *)sender {
+    if (self.userIsEnteringANumber) {
+        if ([self.display.text hasPrefix:@"-"]) {
+            self.display.text = [self.display.text substringFromIndex: 1];
+        } else {
+            self.display.text = [NSString stringWithFormat:@"-%@", self.display.text];
+        }
+    } else {
+        if (![self.display.text isEqualToString:@"0"]) {
+            [self operationPressed:sender];
+        }
+    }
+}
+
 - (IBAction)clearPressed {
     self.brain = NULL;
     self.userIsEnteringANumber = NO;
