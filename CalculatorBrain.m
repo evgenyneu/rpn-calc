@@ -40,7 +40,11 @@
         result = [self popOperand] * [self popOperand];
     } else if ([@"÷" isEqualToString:operation]) {
         double operand = [self popOperand];
-        result = [self popOperand] / operand;
+        if (operand == 0) {
+            result = 0;
+        } else {
+            result = [self popOperand] / operand;
+        }
     } else if ([@"√" isEqualToString:operation]) {
         result = sqrt([self popOperand]);
     } else if ([@"sin" isEqualToString:operation]) {
