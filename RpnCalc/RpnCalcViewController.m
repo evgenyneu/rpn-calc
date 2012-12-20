@@ -91,4 +91,15 @@ static NSUInteger const historySize = 10;
     self.historyLabel.text = @"";
 }
 
+- (IBAction)backspacePressed {
+    if (!self.userIsEnteringANumber) return;
+    if (self.display.text.length > 0) {
+        self.display.text = [self.display.text substringToIndex:self.display.text.length - 1];
+        if (self.display.text.length == 0) {
+            self.userIsEnteringANumber = NO;
+            self.display.text = @"0";
+        }
+    }
+}
+
 @end
