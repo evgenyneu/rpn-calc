@@ -24,10 +24,17 @@ static NSUInteger const historySize = 10;
     return _history;
 }
 
-- (void)updateHistory:(NSString *)text {
+- (void)updateHistory:(NSString *) text {
+    [self updateHistory:text:NO];
+}
+
+- (void)updateHistory:(NSString *) text:(BOOL) isOperation  {
     if (self.history.count == historySize) [self.history removeObjectAtIndex:0];
     [self.history addObject:text];
     self.historyLabel.text = [self.history componentsJoinedByString:@" "];
+    if (isOperation) {
+        self.historyLabel.text = [self.historyLabel.text stringByAppendingString:@" ="];
+    }
 }
 
 - (CalculatorBrain*) brain {
@@ -59,7 +66,7 @@ static NSUInteger const historySize = 10;
     if (self.userIsEnteringANumber) [self enterPressed]; 
     double result = [self.brain performOperation:sender.currentTitle];
     self.display.text = [NSString stringWithFormat:@"%g",result];
-    [self updateHistory:sender.currentTitle];
+    [self updateHistory:sender.currentTitle:YES];
 }
 
 - (IBAction)changeSignPressed:(UIButton *)sender {
