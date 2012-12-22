@@ -195,8 +195,12 @@ typedef enum {
 }
 
 + (NSString*)descriptionOfProgram:(id)program {
+    NSMutableArray *descriptions = [[NSMutableArray alloc] init];
     NSMutableArray *stack = [self convertProgramToStack:program];
-    return [self descriptionOfTopOfStack:stack];
+    while ([stack count]) {
+        [descriptions addObject:[self descriptionOfTopOfStack:stack]];
+    }
+    return [descriptions componentsJoinedByString:@", "];
 }
 
 @end
