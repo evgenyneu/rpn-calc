@@ -12,29 +12,12 @@
 @interface RpnCalcViewController()
 @property (nonatomic) BOOL  userIsEnteringANumber;
 @property (nonatomic, strong) CalculatorBrain *brain;
-@property (nonatomic, strong) NSMutableArray *history;
 @end
 
 @implementation RpnCalcViewController
 
-static NSUInteger const historySize = 10;
-
-- (NSMutableArray*) history {
-    if (!_history) _history = [[NSMutableArray alloc] init];
-    return _history;
-}
-
-- (void)updateHistory:(NSString *) text {
-    [self updateHistory:text:NO];
-}
-
-- (void)updateHistory:(NSString *) text:(BOOL) isOperation  {
-    if (self.history.count == historySize) [self.history removeObjectAtIndex:0];
-    [self.history addObject:text];
-    self.historyLabel.text = [self.history componentsJoinedByString:@" "];
-    if (isOperation) {
-        self.historyLabel.text = [self.historyLabel.text stringByAppendingString:@" ="];
-    }
+- (void)updateHistory  {
+    self.historyLabel.text = [CalculatorBrain descriptionOfProgram:self.brain.program];
 }
 
 - (CalculatorBrain*) brain {
@@ -59,14 +42,14 @@ static NSUInteger const historySize = 10;
 - (IBAction)enterPressed {
     [self.brain pushOperand:[self.display.text doubleValue]];
     self.userIsEnteringANumber = NO;
-    [self updateHistory:self.display.text];
+    [self updateHistory];
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {
     if (self.userIsEnteringANumber) [self enterPressed]; 
     double result = [self.brain performOperation:sender.currentTitle];
     self.display.text = [NSString stringWithFormat:@"%g",result];
-    [self updateHistory:sender.currentTitle:YES];
+    [self updateHistory];
 }
 
 - (IBAction)changeSignPressed:(UIButton *)sender {
@@ -87,7 +70,6 @@ static NSUInteger const historySize = 10;
     self.brain = NULL;
     self.userIsEnteringANumber = NO;
     self.display.text = @"0";
-    self.history = NULL;
     self.historyLabel.text = @"";
 }
 

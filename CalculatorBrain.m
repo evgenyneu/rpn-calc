@@ -149,7 +149,15 @@ typedef enum {
     return nil;
 }
 
-+ (NSString*)descriptionOfTopOfStack:(NSMutableArray*)stack {
++ (NSString *)surroundWithParentheses:(NSString*)string {
+    if ([string rangeOfString:@" + "].location != NSNotFound ||
+        [string rangeOfString:@" − "].location != NSNotFound) {
+        string = [NSString stringWithFormat:@"(%@)", string];
+    }
+    return string;
+}
+
++ (NSString *)descriptionOfTopOfStack:(NSMutableArray *)stack {
     NSString *description;
     
     id topOfStack = [stack lastObject];
@@ -158,18 +166,31 @@ typedef enum {
     switch ([self getStackElementType:topOfStack]) {
         case stackValue:
         case stackOperationWithNoOperands:
-        case stackVariable:
+        case stackVariable: {
             description = [NSString stringWithFormat:@"%@", topOfStack];
             break;
-        case stackOperationWithSingleOperand:
+        }
+        case stackOperationWithSingleOperand: {
             description = [NSString stringWithFormat:@"%@(%@)", topOfStack, [self descriptionOfTopOfStack:stack]];
             break;
-        case stackOperationWithTwoOperands:
-            description = [NSString stringWithFormat:@"%@ %@ %@", [self descriptionOfTopOfStack:stack], topOfStack, [self descriptionOfTopOfStack:stack]];
+        }
+        case stackOperationWithTwoOperands: {
+            NSString *operand1 = [self descriptionOfTopOfStack:stack];
+            NSString *operand2 = [self descriptionOfTopOfStack:stack];
+            
+            NSSet *precedenceOperators = [NSSet setWithObjects:@"×",@"÷", nil];
+            if ([precedenceOperators containsObject:topOfStack]) {
+                operand1 = [self surroundWithParentheses:operand1];
+                operand2 = [self surroundWithParentheses:operand2];
+            }
+
+            description = [NSString stringWithFormat:@"%@ %@ %@", operand2, topOfStack, operand1];
             break;
+        }
         default:
             break;
     }
+    if (!description) description = @"0";
     return description;
 }
 
