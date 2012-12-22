@@ -16,7 +16,10 @@
 @property (readonly) id program;
 
 + (double)runProgram:(id)program;
-+ (NSString  *)descriptionOfProgram:(id)program;
++ (double)runProgram:(id)program
+      usingVariables:(NSDictionary *) variableValues;
++ (NSString *)descriptionOfProgram:(id)program;
++ (NSSet *)variablesUsedInProgram:(id)program;
 
 @end
  
