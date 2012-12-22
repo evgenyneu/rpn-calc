@@ -41,17 +41,13 @@ typedef enum {
     return [self.programStack copy];
 }
 
-+ (NSString *)descriptionOfProgram:(id)program {
-    return @"Implement this in assignment @"; 
-}
-
 + (double)popOperandOffStack:(NSMutableArray *)stack {
     double result = 0;
     
     id topOfStack = [stack lastObject];
     if (topOfStack) [stack removeLastObject];
     
-    if ([topOfStack isKindOfClass:[NSNumber class]]) {
+    if ([self getStackElementType:topOfStack] == stackValue) {
         result = [topOfStack doubleValue]; 
     }
     else if ([topOfStack isKindOfClass:[NSString class]]) {
@@ -112,14 +108,16 @@ typedef enum {
     return [self runProgram:program usingVariables:NULL];
 }
 
-+ (double)runProgram:(id)program
-      usingVariables:(NSDictionary *) variableValues {
-    
-    NSMutableArray *stack;
++ (NSMutableArray*)convertProgramToStack:(id)program{
     if ([program isKindOfClass:[NSArray class]]) {
-        stack = [program mutableCopy];
+        return [program mutableCopy];
     }
-    
+    return nil;
+}
+
++ (void)replaceVariablesWithValues:(id)program
+                    usingVariables:(NSDictionary*)variableValues {
+    NSMutableArray *stack = [self convertProgramToStack:program];
     NSSet *variablesUsed = [self variablesUsedInProgram:program];
     for (int i=0; i<stack.count; i++) {
         id name = [stack objectAtIndex:i];
@@ -129,10 +127,16 @@ typedef enum {
             [stack replaceObjectAtIndex:i withObject:variableValue];
         }
     }
+}
+
++ (double)runProgram:(id)program
+      usingVariables:(NSDictionary*)variableValues {
+    NSMutableArray *stack = [self convertProgramToStack:program];
+    [self replaceVariablesWithValues:program usingVariables:variableValues];
     return [self popOperandOffStack:stack];
 }
 
-+ (NSSet *)variablesUsedInProgram:(id)program {
++ (NSSet*)variablesUsedInProgram:(id)program {
     if ([program isKindOfClass:[NSArray class]]) {
         NSMutableSet *variables = [[NSMutableSet alloc] init];
         for (id element in (NSArray*)program) {
@@ -143,6 +147,35 @@ typedef enum {
         if ([variables count]) return [variables copy];
     }
     return nil;
+}
+
++ (NSString*)descriptionOfTopOfStack:(NSMutableArray*)stack {
+    NSString *description;
+    
+    id topOfStack = [stack lastObject];
+    if (topOfStack) [stack removeLastObject];
+    
+    switch ([self getStackElementType:topOfStack]) {
+        case stackValue:
+        case stackOperationWithNoOperands:
+        case stackVariable:
+            description = [NSString stringWithFormat:@"%@", topOfStack];
+            break;
+        case stackOperationWithSingleOperand:
+            description = [NSString stringWithFormat:@"%@(%@)", topOfStack, [self descriptionOfTopOfStack:stack]];
+            break;
+        case stackOperationWithTwoOperands:
+            description = [NSString stringWithFormat:@"%@ %@ %@", [self descriptionOfTopOfStack:stack], topOfStack, [self descriptionOfTopOfStack:stack]];
+            break;
+        default:
+            break;
+    }
+    return description;
+}
+
++ (NSString*)descriptionOfProgram:(id)program {
+    NSMutableArray *stack = [self convertProgramToStack:program];
+    return [self descriptionOfTopOfStack:stack];
 }
 
 @end
