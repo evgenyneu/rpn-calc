@@ -27,8 +27,20 @@
     return _testVariableValues;
 }
 
-- (void)updateHistory  {
+- (void)updateHistory {
     self.historyLabel.text = [CalculatorBrain descriptionOfProgram:self.brain.program];
+}
+
+- (void)updateVariablesDisplay {
+    NSSet *variablesUsed = [CalculatorBrain variablesUsedInProgram:self.brain.program];
+    NSMutableArray *variablesDisplayArray = [[NSMutableArray alloc] init];
+    for (NSString *variable in variablesUsed) {
+        NSNumber *variableValue = [self.testVariableValues objectForKey:variable];
+        if (!variableValue) variableValue = [NSNumber numberWithDouble:0];
+        [variablesDisplayArray addObject:[NSString stringWithFormat:@"%@ = %g", variable, [variableValue doubleValue]]];
+    }
+    
+    self.variablesDisplay.text = [variablesDisplayArray componentsJoinedByString:@", "];
 }
 
 - (CalculatorBrain*) brain {
@@ -54,6 +66,7 @@
     [self.brain pushOperand:[self.display.text doubleValue]];
     self.userIsEnteringANumber = NO;
     [self updateHistory];
+    [self updateVariablesDisplay];
 }
 
 - (IBAction)variablePressed:(UIButton *)sender {
@@ -62,6 +75,7 @@
     [self.brain pushVariableOrOperation:self.display.text];
     self.userIsEnteringANumber = NO;
     [self updateHistory];
+    [self updateVariablesDisplay];
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {
@@ -71,6 +85,7 @@
                                  usingVariables:self.testVariableValues];
     self.display.text = [NSString stringWithFormat:@"%g",result];
     [self updateHistory];
+    [self updateVariablesDisplay];
 }
 
 - (IBAction)changeSignPressed:(UIButton *)sender {
