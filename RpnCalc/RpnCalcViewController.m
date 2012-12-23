@@ -12,9 +12,20 @@
 @interface RpnCalcViewController()
 @property (nonatomic) BOOL  userIsEnteringANumber;
 @property (nonatomic, strong) CalculatorBrain *brain;
+@property (nonatomic, strong) NSDictionary *testVariableValues;
 @end
 
 @implementation RpnCalcViewController
+
+- (NSDictionary*)testVariableValues {
+    if (!_testVariableValues) {
+        _testVariableValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                               [NSNumber numberWithDouble:4], @"x",
+                               [NSNumber numberWithDouble:2], @"a",
+                               [NSNumber numberWithDouble:9], @"b", nil];
+    }
+    return _testVariableValues;
+}
 
 - (void)updateHistory  {
     self.historyLabel.text = [CalculatorBrain descriptionOfProgram:self.brain.program];
@@ -45,17 +56,19 @@
     [self updateHistory];
 }
 
-
 - (IBAction)variablePressed:(UIButton *)sender {
+    if (self.userIsEnteringANumber) [self enterPressed];
     self.display.text = sender.currentTitle;
-    [self.brain pushVariable:self.display.text];
+    [self.brain pushVariableOrOperation:self.display.text];
     self.userIsEnteringANumber = NO;
     [self updateHistory];
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {
     if (self.userIsEnteringANumber) [self enterPressed]; 
-    double result = [self.brain performOperation:sender.currentTitle];
+    [self.brain pushVariableOrOperation:sender.currentTitle];
+    double result = [CalculatorBrain runProgram:self.brain.program
+                                 usingVariables:self.testVariableValues];
     self.display.text = [NSString stringWithFormat:@"%g",result];
     [self updateHistory];
 }

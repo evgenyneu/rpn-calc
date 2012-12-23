@@ -32,8 +32,8 @@ typedef enum {
     [self.programStack addObject:[NSNumber numberWithDouble:operand]];
 }
 
-- (void)pushVariable:(NSString *)variable {
-    [self.programStack addObject:variable];
+- (void)pushVariableOrOperation:(NSString *)variableOrOperation {
+    [self.programStack addObject:variableOrOperation];
 }
 
 - (double)performOperation:(NSString *)operation {
@@ -112,6 +112,13 @@ typedef enum {
     return [self runProgram:program usingVariables:NULL];
 }
 
++ (double)runProgram:(id)program
+      usingVariables:(NSDictionary*)variableValues {
+    NSMutableArray *stack = [self convertProgramToStack:program];
+    [self replaceVariablesWithValues:stack usingVariables:variableValues];
+    return [self popOperandOffStack:stack];
+}
+
 + (NSMutableArray*)convertProgramToStack:(id)program{
     if ([program isKindOfClass:[NSArray class]]) {
         return [program mutableCopy];
@@ -119,10 +126,9 @@ typedef enum {
     return nil;
 }
 
-+ (void)replaceVariablesWithValues:(id)program
++ (void)replaceVariablesWithValues:(NSMutableArray*)stack
                     usingVariables:(NSDictionary*)variableValues {
-    NSMutableArray *stack = [self convertProgramToStack:program];
-    NSSet *variablesUsed = [self variablesUsedInProgram:program];
+    NSSet *variablesUsed = [self variablesUsedInProgram:stack];
     for (int i=0; i<stack.count; i++) {
         id name = [stack objectAtIndex:i];
         if ([variablesUsed containsObject:name]) {
@@ -131,13 +137,6 @@ typedef enum {
             [stack replaceObjectAtIndex:i withObject:variableValue];
         }
     }
-}
-
-+ (double)runProgram:(id)program
-      usingVariables:(NSDictionary*)variableValues {
-    NSMutableArray *stack = [self convertProgramToStack:program];
-    [self replaceVariablesWithValues:program usingVariables:variableValues];
-    return [self popOperandOffStack:stack];
 }
 
 + (NSSet*)variablesUsedInProgram:(id)program {
