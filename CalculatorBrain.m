@@ -181,7 +181,7 @@ typedef enum {
             NSString *operand1 = [self descriptionOfTopOfStack:stack];
             NSString *operand2 = [self descriptionOfTopOfStack:stack];
             
-            NSSet *precedenceOperators = [NSSet setWithObjects:@"×",@"÷", nil];
+            NSSet *precedenceOperators = [NSSet setWithObjects:@"×",@"÷", @"−", nil];
             if ([precedenceOperators containsObject:topOfStack]) {
                 operand1 = [self surroundWithParentheses:operand1];
                 operand2 = [self surroundWithParentheses:operand2];
