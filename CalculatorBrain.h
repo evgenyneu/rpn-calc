@@ -13,6 +13,7 @@
 - (void)pushOperand:(double)operand;
 - (void)pushVariableOrOperation:(NSString *)variable;
 - (double)performOperation:(NSString *)operation;
+- (void)removeTopFromStack;
 
 @property (readonly) id program;
 

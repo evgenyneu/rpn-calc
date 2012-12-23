@@ -23,6 +23,10 @@ typedef enum {
 
 @implementation CalculatorBrain
 
+- (void)removeTopFromStack {
+    if (self.programStack.count) [self.programStack removeLastObject];
+}
+
 - (NSMutableArray *) programStack {
     if (!_programStack) _programStack = [[NSMutableArray alloc] init];
     return _programStack;

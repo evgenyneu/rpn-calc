@@ -124,13 +124,15 @@
 }
 
 - (IBAction)backspacePressed {
-    if (!self.userIsEnteringANumber) return;
-    if (self.display.text.length > 0) {
+    if (self.userIsEnteringANumber) {
         self.display.text = [self.display.text substringToIndex:self.display.text.length - 1];
         if (self.display.text.length == 0) {
             self.userIsEnteringANumber = NO;
-            self.display.text = @"0";
+            [self runProgram];
         }
+    } else {
+        [self.brain removeTopFromStack];
+        [self runProgram];
     }
 }
 
