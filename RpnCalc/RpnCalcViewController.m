@@ -45,6 +45,14 @@
     [self updateHistory];
 }
 
+
+- (IBAction)variablePressed:(UIButton *)sender {
+    self.display.text = sender.currentTitle;
+    [self.brain pushVariable:self.display.text];
+    self.userIsEnteringANumber = NO;
+    [self updateHistory];
+}
+
 - (IBAction)operationPressed:(UIButton *)sender {
     if (self.userIsEnteringANumber) [self enterPressed]; 
     double result = [self.brain performOperation:sender.currentTitle];
