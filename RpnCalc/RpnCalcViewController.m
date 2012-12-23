@@ -13,18 +13,28 @@
 @property (nonatomic) BOOL  userIsEnteringANumber;
 @property (nonatomic, strong) CalculatorBrain *brain;
 @property (nonatomic, strong) NSDictionary *testVariableValues;
+@property (nonatomic, strong) NSDictionary *testVariableValuesCases;
 @end
 
 @implementation RpnCalcViewController
 
-- (NSDictionary*)testVariableValues {
-    if (!_testVariableValues) {
-        _testVariableValues = [NSDictionary dictionaryWithObjectsAndKeys:
-                               [NSNumber numberWithDouble:4], @"a",
-                               [NSNumber numberWithDouble:2], @"b",
-                               [NSNumber numberWithDouble:9], @"c", nil];
+- (NSDictionary*)testVariableValuesCases {
+    if (!_testVariableValuesCases) {
+        NSDictionary *test1 = [NSDictionary dictionaryWithObjectsAndKeys:
+                               [NSNumber numberWithDouble:1.5], @"a",
+                               [NSNumber numberWithDouble:-10], @"b",
+                               [NSNumber numberWithDouble:0.5], @"c", nil];
+        
+        NSDictionary *test2 = [NSDictionary dictionaryWithObjectsAndKeys:
+                               [NSNumber numberWithDouble:6], @"a",
+                               [NSNumber numberWithDouble:-3], @"c", nil];
+        
+        
+        _testVariableValuesCases = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    test1, @"Test 1",
+                                    test2, @"Test 2", nil];
     }
-    return _testVariableValues;
+    return _testVariableValuesCases;
 }
 
 - (void)updateHistory {
@@ -81,6 +91,10 @@
 - (IBAction)operationPressed:(UIButton *)sender {
     if (self.userIsEnteringANumber) [self enterPressed]; 
     [self.brain pushVariableOrOperation:sender.currentTitle];
+    [self runProgram];
+}
+
+- (void)runProgram {
     double result = [CalculatorBrain runProgram:self.brain.program
                                  usingVariables:self.testVariableValues];
     self.display.text = [NSString stringWithFormat:@"%g",result];
@@ -118,6 +132,11 @@
             self.display.text = @"0";
         }
     }
+}
+
+- (IBAction)testVariablesPressed:(UIButton *)sender {
+    self.testVariableValues = [self.testVariableValuesCases objectForKey:sender.currentTitle];
+    [self runProgram];
 }
 
 @end
