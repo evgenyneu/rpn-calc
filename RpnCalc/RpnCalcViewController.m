@@ -17,6 +17,11 @@
 
 @implementation RpnCalcViewController
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"Show graph"]) {
+    }
+}
+
 - (NSDictionary*)testVariableValues {
     if (!_testVariableValues) {
         _testVariableValues = [NSDictionary dictionaryWithObjectsAndKeys:
