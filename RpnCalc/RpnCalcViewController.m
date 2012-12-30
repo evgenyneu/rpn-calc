@@ -13,44 +13,20 @@
 @property (nonatomic) BOOL  userIsEnteringANumber;
 @property (nonatomic, strong) CalculatorBrain *brain;
 @property (nonatomic, strong) NSDictionary *testVariableValues;
-@property (nonatomic, strong) NSDictionary *testVariableValuesCases;
 @end
 
 @implementation RpnCalcViewController
 
-- (NSDictionary*)testVariableValuesCases {
-    if (!_testVariableValuesCases) {
-        NSDictionary *test1 = [NSDictionary dictionaryWithObjectsAndKeys:
-                               [NSNumber numberWithDouble:1.5], @"a",
-                               [NSNumber numberWithDouble:-10], @"b",
-                               [NSNumber numberWithDouble:0.5], @"c", nil];
-        
-        NSDictionary *test2 = [NSDictionary dictionaryWithObjectsAndKeys:
-                               [NSNumber numberWithDouble:6], @"a",
-                               [NSNumber numberWithDouble:-3], @"c", nil];
-        
-        
-        _testVariableValuesCases = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    test1, @"Test 1",
-                                    test2, @"Test 2", nil];
+- (NSDictionary*)testVariableValues {
+    if (!_testVariableValues) {
+        _testVariableValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                               [NSNumber numberWithDouble:3.3], @"a", nil];
     }
-    return _testVariableValuesCases;
+    return _testVariableValues;
 }
 
 - (void)updateHistory {
     self.historyLabel.text = [CalculatorBrain descriptionOfProgram:self.brain.program];
-}
-
-- (void)updateVariablesDisplay {
-    NSSet *variablesUsed = [CalculatorBrain variablesUsedInProgram:self.brain.program];
-    NSMutableArray *variablesDisplayArray = [[NSMutableArray alloc] init];
-    for (NSString *variable in variablesUsed) {
-        NSNumber *variableValue = [self.testVariableValues objectForKey:variable];
-        if (!variableValue) variableValue = [NSNumber numberWithDouble:0];
-        [variablesDisplayArray addObject:[NSString stringWithFormat:@"%@ = %g", variable, [variableValue doubleValue]]];
-    }
-    
-    self.variablesDisplay.text = [variablesDisplayArray componentsJoinedByString:@", "];
 }
 
 - (CalculatorBrain*) brain {
@@ -76,7 +52,6 @@
     [self.brain pushOperand:[self.display.text doubleValue]];
     self.userIsEnteringANumber = NO;
     [self updateHistory];
-    [self updateVariablesDisplay];
 }
 
 - (IBAction)variablePressed:(UIButton *)sender {
@@ -85,7 +60,6 @@
     [self.brain pushVariableOrOperation:self.display.text];
     self.userIsEnteringANumber = NO;
     [self updateHistory];
-    [self updateVariablesDisplay];
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {
@@ -99,7 +73,6 @@
                                  usingVariables:self.testVariableValues];
     self.display.text = [NSString stringWithFormat:@"%g",result];
     [self updateHistory];
-    [self updateVariablesDisplay];
 }
 
 - (IBAction)changeSignPressed:(UIButton *)sender {
@@ -134,11 +107,6 @@
         [self.brain removeTopFromStack];
         [self runProgram];
     }
-}
-
-- (IBAction)testVariablesPressed:(UIButton *)sender {
-    self.testVariableValues = [self.testVariableValuesCases objectForKey:sender.currentTitle];
-    [self runProgram];
 }
 
 @end
