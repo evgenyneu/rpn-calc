@@ -20,7 +20,7 @@
 - (NSDictionary*)testVariableValues {
     if (!_testVariableValues) {
         _testVariableValues = [NSDictionary dictionaryWithObjectsAndKeys:
-                               [NSNumber numberWithDouble:3.3], @"a", nil];
+                               [NSNumber numberWithDouble:3.3], @"x", nil];
     }
     return _testVariableValues;
 }

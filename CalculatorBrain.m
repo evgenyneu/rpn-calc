@@ -65,7 +65,7 @@ typedef enum {
         } else if ([@"−" isEqualToString:operation]) {
             double operand = [self popOperandOffStack:stack];
             result = [self popOperandOffStack:stack] - operand;
-        } else if ([@"×" isEqualToString:operation]) {
+        } else if ([@"*" isEqualToString:operation]) {
             result = [self popOperandOffStack:stack] * [self popOperandOffStack:stack];
         } else if ([@"÷" isEqualToString:operation]) {
             double operand = [self popOperandOffStack:stack];
@@ -99,7 +99,7 @@ typedef enum {
     if ([stackElement isKindOfClass:[NSNumber class]]) return stackValue;
     if (![stackElement isKindOfClass:[NSString class]]) return stackUnknownElement;
     
-    NSSet *operationsWithTwoOperands = [NSSet setWithObjects:@"+", @"−", @"×",@"÷", nil];
+    NSSet *operationsWithTwoOperands = [NSSet setWithObjects:@"+", @"−", @"*",@"÷", nil];
     NSSet *operationsWithSingleOperand = [NSSet setWithObjects:@"√", @"sin", @"cos",@"±", nil];
     NSSet *operationsWithNoOperands = [NSSet setWithObjects:@"π", nil];
     
@@ -185,7 +185,7 @@ typedef enum {
             NSString *operand1 = [self descriptionOfTopOfStack:stack];
             NSString *operand2 = [self descriptionOfTopOfStack:stack];
             
-            NSSet *precedenceOperators = [NSSet setWithObjects:@"×",@"÷", @"−", nil];
+            NSSet *precedenceOperators = [NSSet setWithObjects:@"*",@"÷", @"−", nil];
             if ([precedenceOperators containsObject:topOfStack]) {
                 operand1 = [self surroundWithParentheses:operand1];
                 operand2 = [self surroundWithParentheses:operand2];
