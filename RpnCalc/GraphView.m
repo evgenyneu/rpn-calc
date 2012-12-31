@@ -7,11 +7,17 @@
 //
 
 #import "GraphView.h"
+#import "AxesDrawer.h"
+
+@interface GraphView()
+@end
 
 @implementation GraphView
 
 - (void)drawRect:(CGRect)rect
 {
+    CGPoint axesOrigin = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+    [AxesDrawer drawAxesInRect:self.bounds originAtPoint:axesOrigin scale:10.0];
 }
 
 @end

@@ -23,6 +23,7 @@
 		2BCD312616741A3F00767A8A /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD312516741A3F00767A8A /* CalculatorBrain.m */; };
 		2BF882621690FD56002BDA18 /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF882611690FD56002BDA18 /* GraphViewController.m */; };
 		2BF882661690FE20002BDA18 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF882651690FE20002BDA18 /* GraphView.m */; };
+		2BF8826F16910353002BDA18 /* AxesDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF8826E16910353002BDA18 /* AxesDrawer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		2BF882611690FD56002BDA18 /* GraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphViewController.m; sourceTree = "<group>"; };
 		2BF882641690FE20002BDA18 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
 		2BF882651690FE20002BDA18 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
+		2BF8826D16910353002BDA18 /* AxesDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AxesDrawer.h; sourceTree = "<group>"; };
+		2BF8826E16910353002BDA18 /* AxesDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AxesDrawer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,12 +131,22 @@
 		2BF8826B169102CB002BDA18 /* graph */ = {
 			isa = PBXGroup;
 			children = (
+				2BF8826C16910353002BDA18 /* AxesDrawer */,
 				2BF882601690FD56002BDA18 /* GraphViewController.h */,
 				2BF882611690FD56002BDA18 /* GraphViewController.m */,
 				2BF882641690FE20002BDA18 /* GraphView.h */,
 				2BF882651690FE20002BDA18 /* GraphView.m */,
 			);
 			name = graph;
+			sourceTree = "<group>";
+		};
+		2BF8826C16910353002BDA18 /* AxesDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				2BF8826D16910353002BDA18 /* AxesDrawer.h */,
+				2BF8826E16910353002BDA18 /* AxesDrawer.m */,
+			);
+			path = AxesDrawer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +224,7 @@
 				2BCD312616741A3F00767A8A /* CalculatorBrain.m in Sources */,
 				2BF882621690FD56002BDA18 /* GraphViewController.m in Sources */,
 				2BF882661690FE20002BDA18 /* GraphView.m in Sources */,
+				2BF8826F16910353002BDA18 /* AxesDrawer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
