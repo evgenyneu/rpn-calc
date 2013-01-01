@@ -21,11 +21,11 @@
 #define HORIZONTAL_TEXT_MARGIN 6
 #define VERTICAL_TEXT_MARGIN 3
 
-+ (float)convertToAxesCoordinates:(int)viewValue atOrigin:(float)origin withScale:(float)scale {
++ (float)convertToAxesCoordinates:(float)viewValue atOrigin:(float)origin withScale:(float)scale {
     return (viewValue - origin) / scale;
 }
 
-+ (int)convertToViewCoordinates:(float)axesValue atOrigin:(float)origin withScale:(float)scale {
++ (float)convertToViewCoordinates:(float)axesValue atOrigin:(float)origin withScale:(float)scale {
     return axesValue * scale + origin;
 }
 

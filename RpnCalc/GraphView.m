@@ -10,7 +10,7 @@
 #import "AxesDrawer.h"
 
 @interface GraphView()
-#define DEFAULT_SCALE 100.0
+#define DEFAULT_SCALE 50.0
 @property (nonatomic) CGFloat scale;
 @property (nonatomic) CGPoint origin;
 @end
@@ -36,11 +36,17 @@
     [AxesDrawer drawAxesInRect:self.bounds originAtPoint:self.origin scale:self.scale];
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextBeginPath(context);
-    for (int xView=0; xView<self.bounds.size.width; xView++) {
-        float x = [AxesDrawer convertToAxesCoordinates:xView atOrigin:self.origin.x withScale:self.scale];
+    for (float xPixel=0; xPixel < self.bounds.size.width * self.contentScaleFactor; xPixel++) {
+        float xPoint = xPixel / self.contentScaleFactor;
+        float x = [AxesDrawer convertToAxesCoordinates:xPoint atOrigin:self.origin.x withScale:self.scale];
         float y = sin(x);
-        int yView = [AxesDrawer convertToViewCoordinates:y atOrigin:self.origin.y withScale:self.scale];
-        NSLog(@"%f %f %i %i",x, y, xView, yView);
+        float yPoint = [AxesDrawer convertToViewCoordinates:y atOrigin:self.origin.y withScale:self.scale];
+        if (!xPixel) {
+            CGContextMoveToPoint(context, xPoint, yPoint);
+        } else {
+            CGContextAddLineToPoint(context, xPoint, yPoint);
+        }
+        NSLog(@"%f %f %f %f",x, y, xPoint, yPoint);
     }
     CGContextStrokePath(context);
 }
