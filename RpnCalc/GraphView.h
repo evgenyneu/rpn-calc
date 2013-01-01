@@ -14,6 +14,8 @@
 
 @interface GraphView : UIView
 
-@property (nonatomic, weak) IBOutlet id<GraphDataSource> dataSource;
+@property (nonatomic, weak) id<GraphDataSource> dataSource;
+- (void)pinch:(UIPinchGestureRecognizer *)gesture;
+- (void)pan:(UIPanGestureRecognizer *)gesture;
 
 @end
