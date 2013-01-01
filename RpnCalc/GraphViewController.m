@@ -7,7 +7,21 @@
 //
 
 #import "GraphViewController.h"
+#import "GraphView.h"
+
+@interface GraphViewController() <GraphDataSource>
+@property (nonatomic, weak) IBOutlet GraphView *graphView;
+@end
 
 @implementation GraphViewController
+
+- (void)setGraphView:(GraphView *)graphView {
+    _graphView = graphView;
+    self.graphView.dataSource = self;
+}
+
+- (float)calcYCoordinate:(float)x{
+    return sin(x);
+}
 
 @end

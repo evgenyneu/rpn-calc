@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol GraphDataSource <NSObject>
+- (float)calcYCoordinate:(float)x;
+@end
+
 @interface GraphView : UIView
+
+@property (nonatomic, weak) IBOutlet id<GraphDataSource> dataSource;
 
 @end
