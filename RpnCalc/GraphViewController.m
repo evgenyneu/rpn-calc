@@ -19,6 +19,9 @@
     _graphView = graphView;
     [self.graphView addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self.graphView action:@selector(pinch:)]];
     [self.graphView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self.graphView action:@selector(pan:)]];
+    UITapGestureRecognizer *trippleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.graphView action:@selector(trippleTap:)];
+    [trippleTapGesture setNumberOfTapsRequired:3];
+    [self.graphView addGestureRecognizer:trippleTapGesture];
     self.graphView.dataSource = self;
 }
 

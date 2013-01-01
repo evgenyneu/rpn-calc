@@ -17,5 +17,6 @@
 @property (nonatomic, weak) id<GraphDataSource> dataSource;
 - (void)pinch:(UIPinchGestureRecognizer *)gesture;
 - (void)pan:(UIPanGestureRecognizer *)gesture;
+- (void)trippleTap:(UITapGestureRecognizer *)gesture;
 
 @end
