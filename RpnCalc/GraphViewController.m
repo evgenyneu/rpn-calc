@@ -12,13 +12,20 @@
 
 @interface GraphViewController() <GraphDataSource>
 @property (nonatomic, weak) IBOutlet GraphView *graphView;
+@property (nonatomic, strong) NSMutableDictionary *coordinatesCache;
 @end
 
 @implementation GraphViewController
 
+- (NSMutableDictionary *)coordinatesCache {
+    if (!_coordinatesCache) _coordinatesCache = [[NSMutableDictionary alloc] init];
+    return _coordinatesCache;
+}
+
 - (void)setProgram:(id)program {
     if (_program != program) {
         _program = program;
+        self.coordinatesCache = nil;
         [self.graphView setNeedsDisplay];
     }
 }
@@ -34,9 +41,16 @@
 }
 
 - (float)calcYCoordinate:(float)x{
-    NSDictionary *variables = [NSDictionary dictionaryWithObjectsAndKeys:
-                               [NSNumber numberWithFloat:x], @"x", nil];
-    return [CalculatorBrain runProgram:self.program usingVariables:variables];
+    NSString *xKeyName = [NSString stringWithFormat:@"%f", x];
+    NSNumber *yNumber = [self.coordinatesCache valueForKey:xKeyName];
+    if (!yNumber) {
+        NSDictionary *variables = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [NSNumber numberWithFloat:x], @"x", nil];
+        float y = [CalculatorBrain runProgram:self.program usingVariables:variables];
+        yNumber = [NSNumber numberWithFloat:y];
+        [self.coordinatesCache setValue:yNumber forKey:xKeyName];
+    }
+    return [yNumber floatValue];
 }
 
 @end
