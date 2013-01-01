@@ -79,14 +79,13 @@
     for (float xPixel=0; xPixel < self.bounds.size.width * self.contentScaleFactor; xPixel++) {
         float xPoint = xPixel / self.contentScaleFactor;
         float x = [AxesDrawer convertToAxesCoordinates:xPoint atOrigin:self.origin.x withScale:self.scale];
-        float y = [self.dataSource calcYCoordinate:x];
+        float y = - [self.dataSource calcYCoordinate:x];
         float yPoint = [AxesDrawer convertToViewCoordinates:y atOrigin:self.origin.y withScale:self.scale];
         if (!xPixel) {
             CGContextMoveToPoint(context, xPoint, yPoint);
         } else {
             CGContextAddLineToPoint(context, xPoint, yPoint);
         }
-//        NSLog(@"%f %f %f %f",x, y, xPoint, yPoint);
     }
     CGContextStrokePath(context);
 }
