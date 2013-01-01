@@ -15,6 +15,14 @@
 
 @implementation GraphViewController
 
+
+- (void)setProgram:(id)program {
+    if (_program != program) {
+        _program = program;
+        [self.graphView setNeedsDisplay];
+    }
+}
+
 - (void)setGraphView:(GraphView *)graphView {
     _graphView = graphView;
     [self.graphView addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self.graphView action:@selector(pinch:)]];
