@@ -10,7 +10,7 @@
 #import "AxesDrawer.h"
 
 @interface GraphView()
-#define DEFAULT_SCALE 10.0
+#define DEFAULT_SCALE 100.0
 @property (nonatomic) CGFloat scale;
 @property (nonatomic) CGPoint origin;
 @end
@@ -34,6 +34,15 @@
 - (void)drawRect:(CGRect)rect
 {
     [AxesDrawer drawAxesInRect:self.bounds originAtPoint:self.origin scale:self.scale];
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextBeginPath(context);
+    for (int xView=0; xView<self.bounds.size.width; xView++) {
+        float x = [AxesDrawer convertToAxesCoordinates:xView atOrigin:self.origin.x withScale:self.scale];
+        float y = sin(x);
+        int yView = [AxesDrawer convertToViewCoordinates:y atOrigin:self.origin.y withScale:self.scale];
+        NSLog(@"%f %f %i %i",x, y, xView, yView);
+    }
+    CGContextStrokePath(context);
 }
 
 @end

@@ -14,4 +14,12 @@
          originAtPoint:(CGPoint)axisOrigin
                  scale:(CGFloat)pointsPerUnit;
 
++ (float)convertToAxesCoordinates:(int) viewValue
+                           atOrigin:(float)origin
+                          withScale:(float)scale;
+
++ (int)convertToViewCoordinates:(float)axesValue
+                        atOrigin:(float)origin
+                       withScale:(float)scale;
+
 @end
