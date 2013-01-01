@@ -8,13 +8,13 @@
 
 #import "GraphViewController.h"
 #import "GraphView.h"
+#import "CalculatorBrain.h"
 
 @interface GraphViewController() <GraphDataSource>
 @property (nonatomic, weak) IBOutlet GraphView *graphView;
 @end
 
 @implementation GraphViewController
-
 
 - (void)setProgram:(id)program {
     if (_program != program) {
@@ -34,7 +34,9 @@
 }
 
 - (float)calcYCoordinate:(float)x{
-    return sin(x);
+    NSDictionary *variables = [NSDictionary dictionaryWithObjectsAndKeys:
+                               [NSNumber numberWithFloat:x], @"x", nil];
+    return [CalculatorBrain runProgram:self.program usingVariables:variables];
 }
 
 @end

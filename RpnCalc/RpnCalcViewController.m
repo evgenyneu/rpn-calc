@@ -7,7 +7,8 @@
 //
 
 #import "RpnCalcViewController.h"
-#import "CalculatorBrain.h" 
+#import "CalculatorBrain.h"
+#import "GraphViewController.h"
 
 @interface RpnCalcViewController()
 @property (nonatomic) BOOL  userIsEnteringANumber;
@@ -19,6 +20,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"Show graph"]) {
+        [segue.destinationViewController setProgram:self.brain.program];
     }
 }
 
