@@ -79,7 +79,6 @@
     [[UIColor whiteColor] set];
     CGContextFillRect(context, rect);
     CGContextRestoreGState(context);
-
 }
 
 - (void)drawProgramDescription {
@@ -89,8 +88,9 @@
     UIFont *font = [UIFont systemFontOfSize:GRAPH_TITLE_FONT_SIZE];
     NSString *textToDraw = [self.dataSource graphTitle];
     CGRect textRect;
-    textRect.origin = CGPointMake(10.0, 10.0);
     textRect.size = [textToDraw sizeWithFont:font];
+    textRect.origin = CGPointMake(self.bounds.size.width - textRect.size.width - 10.0, 9.0);
+    
     
     [self drawGraphTitleBackground:context :textRect];
     [textToDraw drawAtPoint:textRect.origin withFont:font];
