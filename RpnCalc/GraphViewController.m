@@ -53,4 +53,8 @@
     return [yNumber floatValue];
 }
 
+- (NSString*)graphTitle {
+    return [CalculatorBrain descriptionOfProgram:self.program];
+}
+
 @end

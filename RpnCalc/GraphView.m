@@ -11,6 +11,7 @@
 
 @interface GraphView()
 #define DEFAULT_SCALE 50.0
+#define GRAPH_TITLE_FONT_SIZE 12.0
 @property (nonatomic) CGFloat scale;
 @property (nonatomic) CGPoint origin;
 @end
@@ -71,6 +72,31 @@
     self.origin = [gesture locationInView:self];
 }
 
+- (void)drawGraphTitleBackground:(CGContextRef)context :(CGRect)rect {
+    CGContextSaveGState(context);
+    rect.origin.x -= 1;
+    rect.size.height += 2;
+    [[UIColor whiteColor] set];
+    CGContextFillRect(context, rect);
+    CGContextRestoreGState(context);
+
+}
+
+- (void)drawProgramDescription {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    UIGraphicsPushContext(context);
+    
+    UIFont *font = [UIFont systemFontOfSize:GRAPH_TITLE_FONT_SIZE];
+    NSString *textToDraw = [self.dataSource graphTitle];
+    CGRect textRect;
+    textRect.origin = CGPointMake(10.0, 10.0);
+    textRect.size = [textToDraw sizeWithFont:font];
+    
+    [self drawGraphTitleBackground:context :textRect];
+    [textToDraw drawAtPoint:textRect.origin withFont:font];
+    UIGraphicsPopContext();
+}
+
 - (void)drawRect:(CGRect)rect
 {
     [AxesDrawer drawAxesInRect:self.bounds originAtPoint:self.origin scale:self.scale];
@@ -88,6 +114,7 @@
         }
     }
     CGContextStrokePath(context);
+    [self drawProgramDescription];
 }
 
 @end

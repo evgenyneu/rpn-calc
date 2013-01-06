@@ -10,6 +10,7 @@
 
 @protocol GraphDataSource <NSObject>
 - (float)calcYCoordinate:(float)x;
+- (NSString*)graphTitle;
 @end
 
 @interface GraphView : UIView
