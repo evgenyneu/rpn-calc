@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B5F376F16A2328000978FB0 /* iPadStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B5F376E16A2328000978FB0 /* iPadStoryboard.storyboard */; };
 		2BA62DD3167D55D600456F53 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA62DD2167D55D600456F53 /* Icon@2x.png */; };
 		2BA62DD6167D55D800456F53 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA62DD5167D55D800456F53 /* Icon.png */; };
 		2BCD31021674025B00767A8A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCD31011674025B00767A8A /* UIKit.framework */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B5F376E16A2328000978FB0 /* iPadStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPadStoryboard.storyboard; sourceTree = "<group>"; };
 		2BA62DD2167D55D600456F53 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		2BA62DD5167D55D800456F53 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		2BCD30FD1674025B00767A8A /* RpnCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RpnCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +109,7 @@
 				2BCD31101674025B00767A8A /* RpnCalcAppDelegate.h */,
 				2BCD31111674025B00767A8A /* RpnCalcAppDelegate.m */,
 				2BCD31191674025B00767A8A /* MainStoryboard.storyboard */,
+				2B5F376E16A2328000978FB0 /* iPadStoryboard.storyboard */,
 				2BCD311C1674025B00767A8A /* RpnCalcViewController.h */,
 				2BCD311D1674025B00767A8A /* RpnCalcViewController.m */,
 				2BCD31081674025B00767A8A /* Supporting Files */,
@@ -208,6 +211,7 @@
 				2BCD311B1674025B00767A8A /* MainStoryboard.storyboard in Resources */,
 				2BA62DD3167D55D600456F53 /* Icon@2x.png in Resources */,
 				2BA62DD6167D55D800456F53 /* Icon.png in Resources */,
+				2B5F376F16A2328000978FB0 /* iPadStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +310,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RpnCalc/RpnCalc-Prefix.pch";
 				INFOPLIST_FILE = "RpnCalc/RpnCalc-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -317,7 +323,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RpnCalc/RpnCalc-Prefix.pch";
 				INFOPLIST_FILE = "RpnCalc/RpnCalc-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
