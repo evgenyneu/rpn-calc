@@ -1,6 +1,8 @@
 # Overview
 
-RPN Graphing Calculator app for iPhone/iPad. Done as an assignment 3 from CS 193P class lectures presented by Paul Hegarty in Stanford University, fall 2011.
+RPN Calculator app for iPhone/iPad. This is simply done as assignment for CS 193P class lectures presented by Paul Hegarty in Stanford University, fall 2011.
+
+Master branch contains the code for the last assignment. Please check other branches for code for previous assignments.
 
 # External links
 
