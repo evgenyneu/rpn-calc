@@ -13,24 +13,35 @@
 #define DEFAULT_SCALE 50.0
 #define GRAPH_TITLE_FONT_SIZE 12.0
 @property (nonatomic) CGFloat scale;
-@property (nonatomic) CGPoint origin;
+@property (nonatomic) CGPoint originRelativeToCenter;
 @end
 
 @implementation GraphView
 
-@synthesize origin = _origin;
+@synthesize originRelativeToCenter = _originRelativeToCenter;
 @synthesize scale = _scale;
 
 - (CGPoint) origin {
-    if (!_origin.x) {
-        _origin = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
-    }
-    return _origin;
+    CGPoint centerOrigin = [self originRelativeToCenter];
+    return CGPointMake(centerOrigin.x + self.bounds.size.width / 2.0,
+                       centerOrigin.y + self.bounds.size.height / 2.0);
 }
 
 - (void)setOrigin:(CGPoint)origin {
-    if (!CGPointEqualToPoint(_origin, origin)) {
-        _origin = origin;
+    [self setOriginRelativeToCenter:CGPointMake(origin.x - self.bounds.size.width / 2.0,
+                                                origin.y - self.bounds.size.height / 2.0)];
+}
+
+- (CGPoint) originRelativeToCenter {
+    if (!_originRelativeToCenter.x) {
+        _originRelativeToCenter = CGPointMake(0.0, 0.0);
+    }
+    return _originRelativeToCenter;
+}
+
+- (void) setOriginRelativeToCenter:(CGPoint)originRelativeToCenter {
+    if (!CGPointEqualToPoint(_originRelativeToCenter, originRelativeToCenter)) {
+        _originRelativeToCenter = originRelativeToCenter;
         [self setNeedsDisplay];
     }
 }
