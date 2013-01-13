@@ -33,6 +33,7 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="graphView" destination="KPG-1U-3QY" id="mP7-8E-9EH"/>
+                        <outlet property="toolbar" destination="1cI-d5-q0c" id="cWF-Eg-vcK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pd-aV-HYi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -655,6 +656,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GraphViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="graphView" candidateClass="GraphView"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
