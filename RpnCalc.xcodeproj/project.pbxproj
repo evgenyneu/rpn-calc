@@ -19,7 +19,7 @@
 		2BCD31141674025B00767A8A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCD31131674025B00767A8A /* Default.png */; };
 		2BCD31161674025B00767A8A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCD31151674025B00767A8A /* Default@2x.png */; };
 		2BCD31181674025B00767A8A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCD31171674025B00767A8A /* Default-568h@2x.png */; };
-		2BCD311B1674025B00767A8A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCD31191674025B00767A8A /* MainStoryboard.storyboard */; };
+		2BCD311B1674025B00767A8A /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BCD31191674025B00767A8A /* iPhoneStoryboard.storyboard */; };
 		2BCD311E1674025B00767A8A /* RpnCalcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD311D1674025B00767A8A /* RpnCalcViewController.m */; };
 		2BCD312616741A3F00767A8A /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD312516741A3F00767A8A /* CalculatorBrain.m */; };
 		2BF882621690FD56002BDA18 /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF882611690FD56002BDA18 /* GraphViewController.m */; };
@@ -44,7 +44,7 @@
 		2BCD31131674025B00767A8A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2BCD31151674025B00767A8A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2BCD31171674025B00767A8A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		2BCD311A1674025B00767A8A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		2BCD311A1674025B00767A8A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
 		2BCD311C1674025B00767A8A /* RpnCalcViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RpnCalcViewController.h; sourceTree = "<group>"; };
 		2BCD311D1674025B00767A8A /* RpnCalcViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RpnCalcViewController.m; sourceTree = "<group>"; };
 		2BCD312416741A3F00767A8A /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculatorBrain.h; path = ../CalculatorBrain.h; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 				2BCD312516741A3F00767A8A /* CalculatorBrain.m */,
 				2BCD31101674025B00767A8A /* RpnCalcAppDelegate.h */,
 				2BCD31111674025B00767A8A /* RpnCalcAppDelegate.m */,
-				2BCD31191674025B00767A8A /* MainStoryboard.storyboard */,
+				2BCD31191674025B00767A8A /* iPhoneStoryboard.storyboard */,
 				2B5F376E16A2328000978FB0 /* iPadStoryboard.storyboard */,
 				2BCD311C1674025B00767A8A /* RpnCalcViewController.h */,
 				2BCD311D1674025B00767A8A /* RpnCalcViewController.m */,
@@ -208,7 +208,7 @@
 				2BCD31141674025B00767A8A /* Default.png in Resources */,
 				2BCD31161674025B00767A8A /* Default@2x.png in Resources */,
 				2BCD31181674025B00767A8A /* Default-568h@2x.png in Resources */,
-				2BCD311B1674025B00767A8A /* MainStoryboard.storyboard in Resources */,
+				2BCD311B1674025B00767A8A /* iPhoneStoryboard.storyboard in Resources */,
 				2BA62DD3167D55D600456F53 /* Icon@2x.png in Resources */,
 				2BA62DD6167D55D800456F53 /* Icon.png in Resources */,
 				2B5F376F16A2328000978FB0 /* iPadStoryboard.storyboard in Resources */,
@@ -243,12 +243,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		2BCD31191674025B00767A8A /* MainStoryboard.storyboard */ = {
+		2BCD31191674025B00767A8A /* iPhoneStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2BCD311A1674025B00767A8A /* en */,
 			);
-			name = MainStoryboard.storyboard;
+			name = iPhoneStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
