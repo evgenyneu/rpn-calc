@@ -2,7 +2,7 @@
 
 RPN Calculator app for iPhone/iPad. This is simply done as assignment for CS 193P class lectures presented by Paul Hegarty in Stanford University, fall 2011.
 
-Master branch contains the code for the last assignment. Please check other branches for code for previous assignments.
+Master branch contains the code for the latest assignment. Please check other branches for code for previous assignments.
 
 # External links
 
