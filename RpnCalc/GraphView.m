@@ -13,7 +13,9 @@
 #define DEFAULT_SCALE 50.0
 #define GRAPH_TITLE_FONT_SIZE 12.0
 @property (nonatomic) CGFloat scale;
+@property (nonatomic) BOOL scaleSettingsLoaded;
 @property (nonatomic) CGPoint originRelativeToCenter;
+@property (nonatomic) BOOL originSettingsLoaded;
 @end
 
 @implementation GraphView
@@ -33,8 +35,11 @@
 }
 
 - (CGPoint) originRelativeToCenter {
-    if (!_originRelativeToCenter.x) {
-        _originRelativeToCenter = CGPointMake(0.0, 0.0);
+    if (!self.originSettingsLoaded) {
+        double settingsX = [[NSUserDefaults standardUserDefaults] doubleForKey:@"graphCenterX"];
+        double settingsY = [[NSUserDefaults standardUserDefaults] doubleForKey:@"graphCenterY"];
+        _originRelativeToCenter = CGPointMake(settingsX, settingsY);
+        self.originSettingsLoaded = TRUE;
     }
     return _originRelativeToCenter;
 }
@@ -42,13 +47,18 @@
 - (void) setOriginRelativeToCenter:(CGPoint)originRelativeToCenter {
     if (!CGPointEqualToPoint(_originRelativeToCenter, originRelativeToCenter)) {
         _originRelativeToCenter = originRelativeToCenter;
+        [[NSUserDefaults standardUserDefaults] setDouble:originRelativeToCenter.x forKey:@"graphCenterX"];
+        [[NSUserDefaults standardUserDefaults] setDouble:originRelativeToCenter.y forKey:@"graphCenterY"];
         [self setNeedsDisplay];
     }
 }
 
 - (CGFloat) scale {
-    if (!_scale) {
-        _scale = DEFAULT_SCALE;
+    if (!self.scaleSettingsLoaded) {
+        double settingsScale = [[NSUserDefaults standardUserDefaults] doubleForKey:@"graphScale"];
+        if (!settingsScale) settingsScale = DEFAULT_SCALE;
+        _scale = settingsScale;
+        self.scaleSettingsLoaded = TRUE;
     }
     return _scale;
 }
@@ -56,6 +66,7 @@
 - (void)setScale:(CGFloat)scale {
     if (_scale != scale) {
         _scale = scale;
+        [[NSUserDefaults standardUserDefaults] setDouble:scale forKey:@"graphScale"];
         [self setNeedsDisplay];
     }
 }
