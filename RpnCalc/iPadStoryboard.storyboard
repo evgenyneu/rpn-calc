@@ -15,12 +15,18 @@
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="KPG-1U-3QY" customClass="GraphView">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cI-d5-q0c">
+                                <items/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="1cI-d5-q0c" firstAttribute="leading" secondItem="Zae-aA-PNA" secondAttribute="leading" type="default" id="CDR-Is-oKn"/>
+                            <constraint firstItem="KPG-1U-3QY" firstAttribute="top" secondItem="1cI-d5-q0c" secondAttribute="bottom" type="default" id="Hoz-pH-OOU"/>
                             <constraint firstItem="KPG-1U-3QY" firstAttribute="bottom" secondItem="Zae-aA-PNA" secondAttribute="bottom" type="default" id="aoJ-oG-FxF"/>
                             <constraint firstItem="KPG-1U-3QY" firstAttribute="trailing" secondItem="Zae-aA-PNA" secondAttribute="trailing" type="default" id="ctH-Mv-2lH"/>
-                            <constraint firstItem="KPG-1U-3QY" firstAttribute="top" secondItem="Zae-aA-PNA" secondAttribute="top" constant="55" id="elc-wz-PaN"/>
+                            <constraint firstItem="1cI-d5-q0c" firstAttribute="top" secondItem="Zae-aA-PNA" secondAttribute="top" type="default" id="fXU-wl-33t"/>
+                            <constraint firstItem="1cI-d5-q0c" firstAttribute="trailing" secondItem="Zae-aA-PNA" secondAttribute="trailing" type="default" id="sSi-Do-n1T"/>
                             <constraint firstItem="KPG-1U-3QY" firstAttribute="leading" secondItem="Zae-aA-PNA" secondAttribute="leading" type="default" id="zpt-Vq-5aP"/>
                         </constraints>
                     </view>
@@ -502,6 +508,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="graphPressed" destination="sRD-mL-k5Z" eventType="touchUpInside" id="7Ua-10-XTZ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SD-Ok-77B">
                                 <constraints>
@@ -654,6 +663,10 @@
         <class className="RpnCalcViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RpnCalcViewController.h"/>
             <relationships>
+                <relationship kind="action" name="changeSignPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="digitPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="operationPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="variablePressed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="display" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="historyLabel" candidateClass="UILabel"/>
             </relationships>

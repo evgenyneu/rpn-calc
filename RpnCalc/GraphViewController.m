@@ -17,6 +17,11 @@
 
 @implementation GraphViewController
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.splitViewController.delegate = self;
+}
+
 - (NSMutableDictionary *)coordinatesCache {
     if (!_coordinatesCache) _coordinatesCache = [[NSMutableDictionary alloc] init];
     return _coordinatesCache;

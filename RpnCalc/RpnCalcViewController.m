@@ -24,6 +24,20 @@
     }
 }
 
+- (GraphViewController *)splitViewGraphViewController {
+    id vc = [self.splitViewController.viewControllers lastObject];
+    if (![vc isKindOfClass:[GraphViewController class]]) {
+        vc = nil;
+    }
+    return vc;
+}
+
+- (IBAction)graphPressed {
+    if ([self splitViewGraphViewController]) {
+        [[self splitViewGraphViewController] setProgram:self.brain.program];
+    }
+}
+
 - (NSDictionary*)testVariableValues {
     if (!_testVariableValues) {
         _testVariableValues = [NSDictionary dictionaryWithObjectsAndKeys:
