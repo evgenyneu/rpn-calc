@@ -57,7 +57,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
     
     id program = self.programs[indexPath.row];
-    cell.textLabel.text = [CalculatorBrain descriptionOfProgram:program];
+    cell.textLabel.text = [@"y = " stringByAppendingString: [CalculatorBrain descriptionOfProgram:program]];
     
     return cell;
 }
