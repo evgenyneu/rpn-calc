@@ -13,7 +13,7 @@
 
 #define FAVORITES_KEY @"favorites2"
 
-@interface GraphViewController() <GraphDataSource>
+@interface GraphViewController() <GraphDataSource, CalculatorProgramsTableViewControllerDelegate>
 @property (nonatomic, weak) IBOutlet GraphView *graphView;
 @property (nonatomic, strong) NSMutableDictionary *coordinatesCache;
 @property (nonatomic, strong) UIBarButtonItem  *splitViewButtonItem;
@@ -22,10 +22,15 @@
 
 @implementation GraphViewController
 
+- (void) calculatorProgramsTableViewController:(CalculatorProgramsTableViewController *)sender chooseProgram:(id)program {
+    self.program = program;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"Shows Favorite Graphs"]) {
         CalculatorProgramsTableViewController *tableVC = segue.destinationViewController;
         tableVC.programs = [self getFavorites];
+        tableVC.delegate = self;
     }
 }
 
