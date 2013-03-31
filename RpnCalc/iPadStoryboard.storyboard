@@ -41,7 +41,18 @@
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cI-d5-q0c">
-                                <items/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Ae1-Hj-pgc"/>
+                                    <barButtonItem title="Graph" width="65" style="plain" id="Acl-oN-thQ"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="iH3-FG-oW5"/>
+                                    <barButtonItem title="Favorites" id="JqL-0h-v77">
+                                        <connections>
+                                            <segue destination="ACq-c1-yGV" kind="popover" popoverAnchorBarButtonItem="JqL-0h-v77" id="6oa-MA-6WV">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
