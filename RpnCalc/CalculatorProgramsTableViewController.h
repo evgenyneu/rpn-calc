@@ -10,4 +10,6 @@
 
 @interface CalculatorProgramsTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSArray *programs;
+
 @end

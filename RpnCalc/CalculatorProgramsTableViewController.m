@@ -7,6 +7,9 @@
 //
 
 #import "CalculatorProgramsTableViewController.h"
+#import "CalculatorBrain.h"
+
+#define CELL_IDENTIFIER @"Calculator Program Description"
 
 @interface CalculatorProgramsTableViewController ()
 
@@ -22,11 +25,13 @@
     }
     return self;
 }
-
+ 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -40,28 +45,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return self.programs.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
     
-    // Configure the cell...
+    id program = self.programs[indexPath.row];
+    cell.textLabel.text = [CalculatorBrain descriptionOfProgram:program];
     
     return cell;
 }
@@ -105,7 +101,7 @@
 }
 */
 
-#pragma mark - Table view delegate
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

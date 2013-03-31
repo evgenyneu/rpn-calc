@@ -9,6 +9,7 @@
 #import "GraphViewController.h"
 #import "GraphView.h"
 #import "CalculatorBrain.h"
+#import "CalculatorProgramsTableViewController.h"
 
 #define FAVORITES_KEY @"favorites"
 
@@ -20,14 +21,28 @@
 @end
 
 @implementation GraphViewController
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"Shows Favorite Graphs"]) {
+        CalculatorProgramsTableViewController *tableVC = segue.destinationViewController;
+        tableVC.programs = [self getFavorites];
+    }
+}
+
+- (NSMutableArray*)getFavorites {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *favorites = [defaults mutableArrayValueForKey:FAVORITES_KEY];
+    if (!favorites) favorites = [[NSMutableArray alloc] init];
+    return favorites;
+}
   
 - (IBAction)addToFavorites:(id)sender {
     if (!self.program) return;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *favorites = [defaults mutableArrayValueForKey:FAVORITES_KEY];
-    if (!favorites) favorites = [[NSMutableArray alloc] init];
+    NSMutableArray *favorites = [self getFavorites];
     [favorites addObject:self.program];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:favorites forKey:FAVORITES_KEY];
     [defaults synchronize];
 }
