@@ -10,6 +10,8 @@
 #import "GraphView.h"
 #import "CalculatorBrain.h"
 
+#define FAVORITES_KEY @"favorites"
+
 @interface GraphViewController() <GraphDataSource>
 @property (nonatomic, weak) IBOutlet GraphView *graphView;
 @property (nonatomic, strong) NSMutableDictionary *coordinatesCache;
@@ -18,6 +20,17 @@
 @end
 
 @implementation GraphViewController
+  
+- (IBAction)addToFavorites:(id)sender {
+    if (!self.program) return;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *favorites = [defaults mutableArrayValueForKey:FAVORITES_KEY];
+    if (!favorites) favorites = [[NSMutableArray alloc] init];
+    [favorites addObject:self.program];
+    [defaults setObject:favorites forKey:FAVORITES_KEY];
+    [defaults synchronize];
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
