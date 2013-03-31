@@ -11,7 +11,7 @@
 #import "CalculatorBrain.h"
 #import "CalculatorProgramsTableViewController.h"
 
-#define FAVORITES_KEY @"favorites"
+#define FAVORITES_KEY @"favorites2"
 
 @interface GraphViewController() <GraphDataSource>
 @property (nonatomic, weak) IBOutlet GraphView *graphView;
@@ -32,7 +32,6 @@
 - (NSMutableArray*)getFavorites {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *favorites = [defaults mutableArrayValueForKey:FAVORITES_KEY];
-    if (!favorites) favorites = [[NSMutableArray alloc] init];
     return favorites;
 }
   
