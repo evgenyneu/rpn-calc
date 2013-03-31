@@ -14,6 +14,8 @@
 @optional 
 - (void) calculatorProgramsTableViewController: (CalculatorProgramsTableViewController*) sender
                                  chooseProgram: (id)program;
+- (void) calculatorProgramsTableViewController: (CalculatorProgramsTableViewController*) sender
+                                deletedProgramAtIndex:(NSUInteger)index;
 @end
 
 @interface CalculatorProgramsTableViewController : UITableViewController

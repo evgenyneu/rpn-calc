@@ -22,8 +22,17 @@
 
 @implementation GraphViewController
 
-- (void) calculatorProgramsTableViewController:(CalculatorProgramsTableViewController *)sender chooseProgram:(id)program {
+- (void) calculatorProgramsTableViewController:(CalculatorProgramsTableViewController *)sender
+                                 chooseProgram:(id)program {
     self.program = program;
+}
+
+- (void) calculatorProgramsTableViewController:(CalculatorProgramsTableViewController *)sender
+                                deletedProgramAtIndex:(NSUInteger)index {
+    NSMutableArray *favorites = [self getFavorites];
+    [favorites removeObjectAtIndex:index];
+    [self saveFavorites:favorites];
+    sender.programs = favorites;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -39,16 +48,20 @@
     NSMutableArray *favorites = [defaults mutableArrayValueForKey:FAVORITES_KEY];
     return favorites;
 }
+
+- (void)saveFavorites:(NSArray*)favorites {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:favorites forKey:FAVORITES_KEY];
+    [defaults synchronize];
+}
   
 - (IBAction)addToFavorites:(id)sender {
     if (!self.program) return;
     
     NSMutableArray *favorites = [self getFavorites];
     [favorites addObject:self.program];
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:favorites forKey:FAVORITES_KEY];
-    [defaults synchronize];
+        
+    [self saveFavorites:favorites];
 }
 
 - (void)awakeFromNib {

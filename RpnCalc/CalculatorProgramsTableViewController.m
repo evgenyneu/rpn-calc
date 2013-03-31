@@ -67,13 +67,13 @@
     return YES;
 }
 
-/*
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.delegate calculatorProgramsTableViewController:self deletedProgramAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } 
-}*/
+}
 
 /*
 // Override to support rearranging the table view.
