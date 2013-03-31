@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B1F39161707BD0C009419D7 /* CalculatorProgramsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1F39151707BD0C009419D7 /* CalculatorProgramsTableViewController.m */; };
 		2B5F376F16A2328000978FB0 /* iPadStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B5F376E16A2328000978FB0 /* iPadStoryboard.storyboard */; };
 		2BA62DD3167D55D600456F53 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA62DD2167D55D600456F53 /* Icon@2x.png */; };
 		2BA62DD6167D55D800456F53 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA62DD5167D55D800456F53 /* Icon.png */; };
@@ -28,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B1F39141707BD0C009419D7 /* CalculatorProgramsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorProgramsTableViewController.h; sourceTree = "<group>"; };
+		2B1F39151707BD0C009419D7 /* CalculatorProgramsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorProgramsTableViewController.m; sourceTree = "<group>"; };
 		2B5F376E16A2328000978FB0 /* iPadStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPadStoryboard.storyboard; sourceTree = "<group>"; };
 		2BA62DD2167D55D600456F53 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		2BA62DD5167D55D800456F53 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -110,6 +113,8 @@
 				2BCD31111674025B00767A8A /* RpnCalcAppDelegate.m */,
 				2BCD31191674025B00767A8A /* iPhoneStoryboard.storyboard */,
 				2B5F376E16A2328000978FB0 /* iPadStoryboard.storyboard */,
+				2B1F39141707BD0C009419D7 /* CalculatorProgramsTableViewController.h */,
+				2B1F39151707BD0C009419D7 /* CalculatorProgramsTableViewController.m */,
 				2BCD311C1674025B00767A8A /* RpnCalcViewController.h */,
 				2BCD311D1674025B00767A8A /* RpnCalcViewController.m */,
 				2BCD31081674025B00767A8A /* Supporting Files */,
@@ -229,6 +234,7 @@
 				2BF882621690FD56002BDA18 /* GraphViewController.m in Sources */,
 				2BF882661690FE20002BDA18 /* GraphView.m in Sources */,
 				2BF8826F16910353002BDA18 /* AxesDrawer.m in Sources */,
+				2B1F39161707BD0C009419D7 /* CalculatorProgramsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
