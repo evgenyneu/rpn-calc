@@ -25,6 +25,7 @@
 - (void) calculatorProgramsTableViewController:(CalculatorProgramsTableViewController *)sender
                                  chooseProgram:(id)program {
     self.program = program;
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 - (void) calculatorProgramsTableViewController:(CalculatorProgramsTableViewController *)sender
