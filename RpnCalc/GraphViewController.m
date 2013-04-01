@@ -60,7 +60,7 @@
     
     NSMutableArray *favorites = [self getFavorites];
     [favorites addObject:self.program];
-        
+    
     [self saveFavorites:favorites];
 }
 
