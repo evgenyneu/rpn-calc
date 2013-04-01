@@ -11,6 +11,5 @@ Master branch contains the code for the latest assignment. Please check other br
 
 # Screenshots
 
-<img src='https://raw.github.com/evgenyneu/center-vfl/master/rpn_calculator.png' width='434' alt='Calculator main screen'>
-
-<img src='https://raw.github.com/evgenyneu/center-vfl/master/rpn_calculator_graph.png' width='434' alt='Graph screen'>
+<img src='https://raw.github.com/evgenyneu/rpn-calc/master/rpn_calculator.png' width='434' alt='Calculator main screen'>
+<img src='https://raw.github.com/evgenyneu/rpn-calc/master/rpn_calculator_graph.png' width='434' alt='Graph screen'>
